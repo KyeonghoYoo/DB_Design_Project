@@ -1,0 +1,23 @@
+﻿body {margin: 0; padding: 0; line-height: 1.2em; font-size: 0.75em; line-height: 1.2em}
+.wrap {margin: 0; margin-right: auto; margin-left: auto; }
+header {vertical-align: middle; }
+.left {float: left;}
+.right {float: right;list-style: none;}
+input {margin-left: 100px; margin-top: 12px; padding:0; height:30px; width: 230px}
+
+
+#logo {float: left; vertical-align: middle; margin: 30px 0 0 20px; }
+.clear {clear: both;}
+hr {clear: both;}
+
+
+nav {margin: 0 0 20px 0; float: left; }
+nav ul li {float: left; margin: 0 5px; list-style: none; }
+nav a {display: block; padding: 5px; }
+
+
+footer #copyright {margin: 20px 0 0 10px; float: left; }
+footer #shopping {margin: 10px 20px 0 0; float: right; }
+aside {vertical-align: middle;}
+aside {margin: 5px;}
+article {margin: 5px 0 10px 0; }

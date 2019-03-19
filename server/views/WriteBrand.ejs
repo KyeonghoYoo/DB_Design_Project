@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>DN CLUB</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" media="screen"
+	href="resources/css/main.css" />
+<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+      $('.outer-menu-item').hover(function() {
+         $(this).find('.inner-menu').show();
+      }, function() {
+         $(this).find('.inner-menu').hide();
+      })
+   });
+
+</script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/Style.css" />
+<link rel="stylesheet" type="text/css" href="layout/postlayout.css">
+</head>
+<body>
+	<!-- 전체를 감싸는 태그 -->
+	<div class="head"></div>
+	<div id="page-wrapper">
+			<!-- 헤더 -->
+			<header id="main-header">
+				<hgroup>
+					<a href="/franchiseInfo/readList">
+						<h1 class="master-title">프렌차이즈 창업</h1>
+						<h2 class="master-description">business</h2>
+					</a>
+				</hgroup>
+			</header>
+			<nav id="main-navigation">
+				<div class="pull-left">
+					<ul class="outer-menu">
+						<li class="outer-menu-item"><a href="/franchiseInfo/readList"><span class="menu-title">Home</span></a>
+							<ul class="inner-menu">
+							</ul>
+						</li>
+						<li class="outer-menu-item"><a href="/WriteConsult"><span class="menu-title">창업의뢰</span></a>
+							<ul class="inner-menu">
+							</ul>
+						</li>
+						<li class="outer-menu-item"><a href="/WriteGeneral"><span class="menu-title">일반문의</span></a>
+							<ul class="inner-menu">
+							</ul>
+						</li>
+						<li class="outer-menu-item"><a href="/Company"><span class="menu-title">업체등록문의</span></a>
+							<ul class="inner-menu">
+							</ul>
+						</li>
+						<li class="outer-menu-item"><a href="/RecommendBrand"><span class="menu-title">추천브랜드</span></a>
+							<ul class="inner-menu">
+							</ul>
+						</li>
+	
+					</ul>
+				</div>
+				<div class="pull-right">
+					<div class="search-bar">
+						<form action="/franchiseInfo/search" method="GET">
+							<input name="keyword" type="text" class="input-search" />
+							<input type="submit" class="input-search-submit" value="" />
+						</form>
+					</div>
+					<div id="main-header-bar">
+						<div id="main-header-bar-module">
+							<ul>
+								<%if(session.isLogin){%>				
+									<li><a style="float:left;" href="/UserPage">마이페이지</a></li>
+	
+									<li><a href="/generalMember/logout">로그아웃</a></li>
+								<%} else {%>
+		
+									<li><a href="/generalMember/login">로그인</a></li>
+	
+									<li><a href="/generalMember/signup">회원가입</a></li>
+								<%}%>
+							</ul>
+							<!-- <div id="main-header-bar-cart">
+								<img src="resources/img/cart.svg"> <a href="getShoppingBasketList.do">Cart</a>
+							</div> -->
+						</div>
+					</div>
+				</div>
+		</nav>
+		<!-- 아이템 테이블 -->
+		<div id="content">
+				<section id="main-section">
+						<div class="container">		
+									<p>Home > 창업의뢰</p>
+									<h2>문의신청</h2>
+									<hr style="border-color: #000063;  border-width: 1.5px; margin-bottom:10px; margin-top: 10px;">
+									<br>
+									<fieldset style="border-width: 2px; border-color: whitesmoke; border-radius: 5px;">
+									<legend style="font-size: 20px;">문의 내용 입력</legend>
+				
+									<center>
+										<form action="/WriteBrand" method="POST">
+										<input type="hidden" name="FranchiseInfo" value="<%=FranchiseInfo%>">
+									<table>
+                                            <tr>
+                                                    <td width=200 align=center >제 목</td>
+                                                    <td align=left >
+                                                        <input style="height: 25px;" type=text name=title size=30 maxlength=35>
+                                                    </td>
+                                                </tr>
+												
+                                                <tr>
+                                                        <td width=200 align=center >지 역</td>
+                                                        <td align=left >
+                                                            	<select style="height:30px;float:left; " name="city" id="">
+                                                                        <option value="">시.도선택</option>
+                                                                        <option value="서울특별시">서울특별시</option>
+                                                                        <option value="부산광역시">부산광역시</option>
+                                                                        <option value="인천">인천</option>
+                                                                    </select>
+                                                                    <select style="height:30px;float:left; margin-left: 10px;" name="county" id="">
+																			<option value="">군.구선택</option>
+																			<option value="부산진구">부산진구</option>
+																			<option value="사상구">사상구</option>
+																			<option value="해운대구">해운대구</option>
+                                                                    </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                            <td width=200 align=center >창업<br>자금</td>
+                                                            <td align=left >
+                                                                    <select style="height:30px;float:left; " name="fund" id="">
+                                                                            <option value="">자금선택</option>
+                                                                            <option value="1억 이하">1억 이하</option>
+                                                                            <option value="1억 ~ 3억">1억 ~ 3억</option>
+                                                                            <option value="3억 이상">3억 이상</option>
+                                                                        </select>
+                                                            </td>
+                                                        </tr>
+	<tr>
+                                                                <td width=200 align=center  >문의<br>사항</td>
+                                                                <td align=left >
+                                                                    <textarea name=content cols=65 rows=7></TEXTAREA>
+                                                                </td>
+                                                        </tr>
+												
+									</table>
+								</center>
+									</fieldset>
+									<br>
+								<center>
+									<input style="border-radius:0.25em; font-size: 17px; background-color: white; text-decoration:none; border:#D5D5D5; border-style: solid; padding: 2px;  color: black;" id="signup_button" style="margin: auto 0" type="submit" value="신청">
+								</center>
+							</form>
+						
+							<!--<button style="border-radius:0.25em; font-size: 17px; background-color: white; border-style: solid; padding: 2px; float: right;" onclick="location.href='write.php'">글쓰기</button> -->
+							
+						</section>
+					</div>
+			
+		</div>
+		<footer id="main-footer">
+            <div id="main-footer-module">
+                    <a href="#">고객상담센터(010-1234-5678)  FAX(02-1234-0000)  대표메일(shin0000@naver.com)  광고문의 유경호과장(you01@google.com)</a>
+                </div>
+		</footer>
+	</div>
+</body>
+</html>

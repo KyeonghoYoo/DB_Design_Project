@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>로그인</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/Login-Layout.css">
+</head>
+<body>
+	<header>
+		<div class="wrap">
+		<a style="color: #000063;" id="Logo" href="/franchiseInfo/readList">프렌차이즈 창업</a>
+		<hr style="border-color: #000063;">	
+		<div class="left">
+		<p>Home>로그인</p>
+		<h1>로그인</h1>
+		<hr>
+		<form action="/generalMember/login" method="POST">
+		<label>아이디</label>	
+		<input type="text" id="username" name="memberId" style="margin: 34px;">
+		<br>
+		<label>비밀번호</label>
+		<input type="password" id="password" name="password" style="margin-left: 20px;">
+		</div>
+		<input id="login_button" style="padding:34px; margin-top: 111px; font-size: 36px; background-color: #D9E5FF; border-style: none; color: white;" type="submit" value="login" disabled/>
+		</form>
+		<br>
+		<br>
+		<a id="font" href="/generalMember/signUp" style="margin-left: 82px; font-size: 12px; color: #000063;">회원가입</a>
+
+		<hr>
+	</header>
+	<script type="text/javascript" src="/javascripts/login.js"></script>
+</body>
+</html>

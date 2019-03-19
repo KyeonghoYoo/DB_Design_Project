@@ -1,0 +1,26 @@
+﻿.wrap {width: 700px; min-height: 600px; }
+ .wrap {text-align:left; text-decoration: none; background-color: white;}
+ .wrap {margin: 20px; margin-right: auto; margin-left: auto; }
+
+header {height: 80px; }
+
+.left {float: left;}
+#username2{width: 300px; height: 30px;}
+#pass1{width: 300px; height: 30px;}
+#password{width: 300px; height: 30px;}
+#name{width: 300px; height: 30px;}
+#tele{width: 150px; height: 30px;}
+
+
+label{font-size: 15px}
+
+ body {list-style: none;font-family: Verdana, Geneva, sans-serif; font-weight: bold;}
+ body {margin: 0; padding: 0; line-height: 1.2em; font-size: 0.75em; line-height: 1.2em}
+ header {vertical-align: middle; }
+
+ a { text-decoration: none; }
+
+#font{font-size: 12px; text-decoration: none;}
+ #Logo{color: #FF0000;font-size: 48px;} 
+
+

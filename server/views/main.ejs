@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DN</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('.outer-menu-item').hover(function () {
+				$(this).find('.inner-menu').show();
+			}, function () {
+				$(this).find('.inner-menu').hide();
+			})
+		});
+
+	</script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/Style.css" />
+</head>
+
+<body>
+	<div class="head"></div>
+	<!-- 전체를 감싸는 태그 -->
+	<div id="page-wrapper">
+		<!-- 헤더 -->
+		<header id="main-header">
+			<hgroup>
+				<a href="/franchiseInfo/readList">
+					<h1 class="master-title">프렌차이즈 창업</h1>
+					<h2 class="master-description">business</h2>
+				</a>
+			</hgroup>
+		</header>
+		<nav id="main-navigation">
+			<div class="pull-left">
+				<ul class="outer-menu">
+					<li class="outer-menu-item"><a href="/franchiseInfo/readList"><span class="menu-title">Home</span></a>
+						<ul class="inner-menu">
+						</ul>
+					</li>
+					<li class="outer-menu-item"><a href="/WriteConsult"><span class="menu-title">창업의뢰</span></a>
+						<ul class="inner-menu">
+						</ul>
+					</li>
+					<li class="outer-menu-item"><a href="/WriteGeneral"><span class="menu-title">일반문의</span></a>
+						<ul class="inner-menu">
+						</ul>
+					</li>
+					<li class="outer-menu-item"><a href="/Company"><span class="menu-title">업체등록문의</span></a>
+						<ul class="inner-menu">
+						</ul>
+					</li>
+					<li class="outer-menu-item"><a href="/RecommendBrand"><span class="menu-title">추천브랜드</span></a>
+						<ul class="inner-menu">
+						</ul>
+					</li>
+
+				</ul>
+			</div>
+			<div class="pull-right">
+				<div class="search-bar">
+					<form action="/franchiseInfo/search" method="GET">
+						<input name="keyword" type="text" class="input-search" />
+						<input type="submit" class="input-search-submit" value="" />
+					</form>
+				</div>
+				<div id="main-header-bar">
+					<div id="main-header-bar-module">
+						<ul>
+							<%if(session.isLogin){%>				
+								<li><a style="float:left;" href="/UserPage">마이페이지</a></li>
+
+								<li><a href="/generalMember/logout">로그아웃</a></li>
+							<%} else {%>
+	
+								<li><a href="/generalMember/login">로그인</a></li>
+
+								<li><a href="/generalMember/signup">회원가입</a></li>
+							<%}%>
+						</ul>
+						<!-- <div id="main-header-bar-cart">
+							<img src="resources/img/cart.svg"> <a href="getShoppingBasketList.do">Cart</a>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- 아이템 테이블 -->
+		<div id="content">
+			<section id="main-section">
+				<% FranchiseList.forEach(function(el, index) {%>
+				<article>
+					<a href="/franchiseInfo/read?franchiseInfoNum=<%=el.FranchiseInfoNum%>">
+						<div class="article-body">
+							<img src="<%=el.photoURL%>" alt="" />
+							<p id="product-name">
+								<%=el.Name%>
+							</p>
+							<p id="product-price">
+								<%=el.BusinessTypeName%>
+							</p>
+						</div>
+					</a>
+				</article>
+				<%})%>
+			</section>
+		</div>
+		<footer id="main-footer">
+			<div id="main-footer-module">
+				<a href="#">고객상담센터(010-1234-5678) FAX(02-1234-0000) 대표메일(shin0000@naver.com) 광고문의 유경호과장(you01@gmail.com)</a>
+			</div>
+		</footer>
+	</div>
+</body>
+
+</html>

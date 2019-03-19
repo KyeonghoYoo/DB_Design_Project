@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DN CLUB</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('.outer-menu-item').hover(function () {
+				$(this).find('.inner-menu').show();
+			}, function () {
+				$(this).find('.inner-menu').hide();
+			})
+		});
+
+	</script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/Style.css" />
+</head>
+
+<body>
+	<!-- 전체를 감싸는 태그 -->
+	<div class="head"></div>
+	<div id="page-wrapper">
+		<!-- 헤더 -->
+		<header id="main-header">
+		<hgroup>
+				<a href="/franchiseInfo/readList">
+					<h1 class="master-title">프렌차이즈 창업</h1>
+					<h2 class="master-description">business</h2>
+				</a>
+			</hgroup>
+		</header>
+		<nav id="main-navigation">
+			<div class="pull-left">
+				<ul class="outer-menu">
+					<li class="outer-menu-item"><a href="/franchiseInfo/readList"><span class="menu-title">Home</span></a>
+						<ul class="inner-menu">
+						</ul>
+					</li>
+					<li class="outer-menu-item"><a href="/WriteConsult"><span class="menu-title">창업의뢰</span></a>
+						<ul class="inner-menu">
+						</ul>
+					</li>
+					<li class="outer-menu-item"><a href="/WriteGeneral"><span class="menu-title">일반문의</span></a>
+						<ul class="inner-menu">
+						</ul>
+					</li>
+					<li class="outer-menu-item"><a href="/Company"><span class="menu-title">업체등록문의</span></a>
+						<ul class="inner-menu">
+						</ul>
+					</li>
+					<li class="outer-menu-item"><a href="/RecommendBrand"><span class="menu-title">추천브랜드</span></a>
+						<ul class="inner-menu">
+						</ul>
+					</li>
+
+				</ul>
+			</div>
+			<div class="pull-right">
+				<div class="search-bar">
+					<form action="searchBookList.do" method="POST">
+						<input name="searchKeyword" type="text" class="input-search" />
+						<input type="submit" class="input-search-submit" value="" />
+					</form>
+				</div>
+				<div id="main-header-bar">
+					<div id="main-header-bar-module">
+						<ul>
+							<%if(session.isLogin){%>
+							<li><a style="float:left;" href="/UserPage">마이페이지</a></li>
+
+							<li><a href="/generalMember/logout">로그아웃</a></li>
+							<%} else {%>
+
+							<li><a href="/generalMember/login">로그인</a></li>
+
+							<li><a href="/generalMember/signup">회원가입</a></li>
+							<%}%>
+
+						</ul>
+						<!-- <div id="main-header-bar-cart">
+							<img src="resources/img/cart.svg"> <a href="getShoppingBasketList.do">Cart</a>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- 아이템 테이블 -->
+		<div id="content">
+			<section id="main-section">
+				<div class="container">
+					<p>Home > 마이페이지</p>
+
+					<h2>내 정보</h2>
+					<hr style="border-color: #000063;  border-width: 1.5px; margin-bottom:10px; margin-top: 10px;">
+					<br>
+					<table class="table3" style="float:left; margin-left:30px; border-width: 1px;">
+
+						<tr>
+							<th align="center">
+								<p width=200 align=center></p>이름
+							</th>
+							<td align=left>
+								<p width=200 align=left><%=session.userInfo.Name%></p>
+							</td>
+
+						</tr>
+						<tr>
+							<th align=left>
+								<p width=200 align=center></p>ID
+							</th>
+							<td align=left>
+								<p width=200 align=left><%=session.userInfo.MemberId%></p>
+							</td>
+
+						</tr>
+						<tr>
+							<th align=center>
+								<p width=200 align=center></p>연락처
+							</th>
+							<td align=left>
+								<p width=200 align=left><%=session.userInfo.ContactNumber%></p>
+							</td>
+						</tr>
+						<tr>
+							<th align=center>
+								<p width=200 align=center></p>이메일
+							</th>
+							<td align=left>
+								<p width=200 align=left><%=session.userInfo.Email%></p>
+							</td>
+
+						</tr>
+						<tr>
+							<td colspan="2">
+							</td>
+						</tr>
+					</table>
+					<br>
+					<br>
+					<br>
+
+					<table style="float:left; margin-left:200px;width: 500px;" class="table table-hover">
+						<thead>
+							<tr style="background-color: whitesmoke">
+								<th>번호</th>
+								<th>관심업종</th>
+								<th>처리</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%interestedbusiness.forEach(function(el, index) {%>
+							<tr>
+								<!--?id=?php echo $row[0];-->
+								<td name="id"><%=index + 1%></td>
+								<!--read.php로 row[0]의 값을 id라는 변수에 넣어서 보내게 해줌(?의 주요역할)-->
+								<div id="a1">
+									<td><%=el.BusinessTypeName%></a></td>
+								</div>
+								<td> <a style="border-radius:0.25em; font-size: 17px; background-color: white; text-decoration:none; border:#D5D5D5; border-style: solid; padding: 2px; margin: auto 0; color: black;"
+									 href="/deleteInterested?businessTypeCode=<%=el.BusinessTypeCode%>">삭제</a></td>
+							</tr>
+							<%})%>
+							<tr>
+								<!--?id=?php echo $row[0];-->
+								<td colspan="3" name="id">
+									<form action="/insertInterested" method="POST">
+									<select style="height:30px;float:left; margin: 10px; vertical-align: top;" name="businessType" id="">
+										<option value="">선택</option>
+										<option value="B01">제과/베이커리</option>
+										<option value="B02">커피점</option>
+										<option value="B03">패스트푸드</option>
+										<option value="B04">피자/스파게티</option>
+										<option value="B05">떡볶이전문점</option>
+										<option value="B06">파스타/브런치전문점</option>
+										<option value="B07">죽/도시락/비빔밥</option>
+										<option value="B08">퓨전음식/중식</option>
+										<option value="B09">레스토랑</option>
+										<option value="B10">일반식당</option>
+										<option value="B11">고기전문점</option>
+										<option value="B12">일식/참치/횟집</option>
+										<option value="B13">김밥/분식전문점</option>
+										<option value="B14">치킨전문점</option>
+										<option value="B15">퓨전주점</option>
+										<option value="B16">BAR/카페</option>
+										<option value="B17">포장마차</option>
+									</select>
+									<input style="border-radius:0.25em; font-size: 17px; background-color: white; text-decoration:none; border:#D5D5D5; border-style: solid; padding: 2px;  color: black;" id="signup_button" style="margin: auto 0" type="submit" value="등록">
+									</form>
+								</td>
+							</tr>
+					</table>
+					<br>
+					<h2 style="margin: 3px;">일반문의</h2>
+					<hr style="border-color: #000063;  border-width: 1.5px; margin-bottom:10px; margin-top: 10px;">
+					<table class="table table-hover">
+						<thead>
+							<tr style="background-color: #f1f3f5">
+								<th>번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>등록일</th>
+								<th>상태</th>
+							</tr>
+						</thead>
+						<tbody>
+								<%generalInquiries.forEach(function(el, index) {%>
+									<%
+										var date = new Date(el.RegDate);
+										date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" +date.getDate()
+									%>
+									<tr>
+										<td name="id"><%=el.InquiryNum%></td>
+										<div id="a1">
+											<td><a style="text-decoration:none; color:black" href="/ReadGeneral?InquiryNum=<%=el.InquiryNum%>"><%=el.Title%></a></td>
+										</div>
+										<td><%=el.Name%></td>
+										<td><%=date%></td>
+										<td><%=el.StateName%></td>
+									</tr>
+									<%})%>
+					</table>
+
+					<h2>창업의뢰</h2>
+					<hr style="border-color: #000063;  border-width: 1.5px; margin-bottom:10px; margin-top: 10px;">
+					<br>
+					<table class="table table-hover">
+						<thead>
+							<tr style="background-color: #f1f3f5">
+								<th>번호</th>
+								<th>제목</th>
+								<th>신청인</th>
+								<th>등록일</th>
+								<th>상태</th>
+							</tr>
+						</thead>
+						<tbody>
+								<%startBusinessInquiries.forEach(function(el, index) {%>
+									<%
+										var date = new Date(el.RegDate);
+										date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" +date.getDate()
+									%>
+									<tr>
+										<td name="id"><%=el.InquiryNum%></td>
+										<div id="a1">
+											<td><a style="text-decoration:none; color:black" href="/ReadConsult?InquiryNum=<%=el.InquiryNum%>"><%=el.Title%></a></td>
+										</div>
+										<td><%=el.Name%></td>
+										<td><%=date%></td>
+										<td><%=el.StateName%></td>
+									</tr>
+									<%})%>
+					</table>
+					<h2>신청내역</h2>
+					<hr style="border-color: #000063;  border-width: 1.5px; margin-bottom:10px; margin-top: 10px;">
+					<br>
+					<table class="table table-hover">
+						<thead>
+							<tr style="background-color: #f1f3f5">
+								<th>번호</th>
+								<th>제목</th>
+								<th>브랜드명</th>
+								<th>신청인</th>
+								<th>등록일</th>
+								<th>상태</th>
+							</tr>
+						</thead>
+						<tbody>
+								<%FranchiseInquiries.forEach(function(el, index) {%>
+									<%
+										var date = new Date(el.RegDate);
+										date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" +date.getDate()
+									%>
+									<tr>
+										<td name="id"><%=el.InquiryNum%></td>
+										<div id="a1">
+											<td><a style="text-decoration:none; color:black" href="/ReadBrand?InquiryNum=<%=el.InquiryNum%>"><%=el.Title%></a></td>
+										</div>
+										<td><%=el.FranchiseName%></td>
+										<td><%=el.Name%></td>
+										<td><%=date%></td>
+										<td><%=el.StateName%></td>
+									</tr>
+									<%})%>
+					</table>
+
+
+					<!--<button style="border-radius:0.25em; font-size: 17px; background-color: white; border-style: solid; padding: 2px; float: right;" onclick="location.href='write.php'">글쓰기</button> -->
+					<div class="text-center">
+						<ul class="pagination">
+							<li><a href="#"></a></li>
+						</ul>
+					</div>
+
+
+			</section>
+		</div>
+		<footer id="main-footer">
+			<div id="main-footer-module">
+				<a href="#">고객상담센터(010-1234-5678) FAX(02-1234-0000) 대표메일(shin0000@naver.com) 광고문의 유경호과장(you01@google.com)</a>
+			</div>
+		</footer>
+	</div>
+</body>
+
+</html>

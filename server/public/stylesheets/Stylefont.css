@@ -1,0 +1,27 @@
+﻿body { font-size: 0.75em; line-height: 1.2em; }
+img {border: none; }
+.wrap {text-align:left; text-decoration: none; background-color: white;}
+a { text-decoration: none; }
+
+#logo {color: #FF0000; font-size: 48px; }
+header .right a:hover {color: gray; }
+input {color: blue;}
+aside {background-color: #FFA7A7;}
+aside ul li{list-style: none;}
+aside ul{list-style: none;font-family: Verdana, Geneva, sans-serif; font-size: 14px; font-weight: bold; color: #ff0099;}
+aside a{text-decoration: none; color: #000000; border-style: hidden hidden solid hidden; border-color: transparent;}
+aside{ background-color: #FFA7A7;}
+aside a:hover {color:#FF5E00; border-color: red;}
+aside ul li{padding-bottom: 15px;}
+
+article {clear: both;}
+
+nav {background-color: #FFA7A7;}
+nav ul {list-style: none; font-family: Verdana, Geneva, sans-serif; font-size: 14px; font-weight: bold; color: #ff0099; }
+nav a {text-decoration: none; color: #000000; border-style: hidden hidden solid hidden; border-color: transparent;}
+nav a:hover {color: #FF5E00; border-color: red; }
+
+
+footer #copyright {font-family: consolas; }
+footer #SNS a {text-decoration: none; }
+

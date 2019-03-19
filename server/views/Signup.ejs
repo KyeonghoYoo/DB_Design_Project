@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>회원가입</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/signup.css">
+</head>
+<body>
+	<header>
+		<div class="wrap">
+				<a style="color: #000063;" id="Logo" href="/franchiseInfo/readList">프렌차이즈 창업</a>
+				<hr style="border-color: #000063;">	
+		<div class="left">
+		<p>Home > 회원가입</p>
+		<h1>회원가입</h1>
+		<hr/>
+		<br>
+		<fieldset>
+		<legend style="font-size: 20px;">정보입력</legend>
+		<br>
+		<form action="/generalMember/write" method="POST">
+		<label>이름</label>
+		<input type="text" id="name" name="Name" style="margin-left: 48px;">
+		<br>
+		<label>아이디</label>	
+		<input type="text" id="username2" name="memberId" style="margin: 34px;">
+
+		<br>
+		<label>비밀번호</label>
+		<input type="password" id="pass1" name="password" style="margin-left: 20px;">
+		<br>
+		<br>
+
+		<label>전화번호</label>
+		<input style="margin-top: 10px;" id="tele" type="text" name="tele1">
+		-
+		<input style="margin-top: 10px;" id="tele" type="text" name="tele2">
+		-
+		<input style="margin-top: 10px;" id="tele" type="text" name="tele3">
+		<br>
+		<label>이메일</label>
+		<input type="text" id="tele" name="email1" style="margin-left: 37px; margin-top: 30px;">
+		@
+		<input type="text" id="tele" name="email2" style="margin-left: 37px; margin-top: 30px;">
+		</fieldset>
+		<br>
+		<input id="signup_button" style="font-size: 12pt;margin-left:40%; margin-top: 10px;" type="submit" value="회원가입">
+		</form>
+		</div>
+	</header>
+	<script type="text/javascript" src="/javascripts/signup.js"></script>
+</body>
+</html>
